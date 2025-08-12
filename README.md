@@ -1,5 +1,36 @@
 # SwiftTransformer
 
+This repository makes some modifications on top of [LLMServe/SwiftTransformer](https://github.com/LLMServe/SwiftTransformer).
+
+## Installation
+
+I use [`uv`](https://docs.astral.sh/uv) for torch management.
+
+1. Install `torch==2.7.1` with correct cuda version ([Refer to here](https://pytorch.org/get-started/previous-versions/)). DO NOT use `torch==2.8` for now
+  ```bash
+  $ uv venv --python 3.12 --seed
+  # CUDA 12.6
+  $ uv pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cu126
+  $ source .venv/bin/activate
+  ```
+2. Then build it
+  ```bash
+  $ cmake --build build
+  $ cmake -B build -j$(nproc)
+  ```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div align="center">
+<h1>Original README.md from <a href="https://github.com/LLMServe/SwiftTransformer">SwiftTransformer</a></h1>
+</div>
+
+# SwiftTransformer
+
 SwiftTransformer is a tiny yet powerful implementation of the inference infrastructure for transformer model families. It aims at providing an easy-to-use framework for researchers to try on their ideas and iterate quickly. Yet it also supports popular features like model/pipeline parallelism, FlashAttention, Continuous Batching, PagedAttention and should works as a great foundation for researchers to build their prototype. Currently, [DistServe](https://github.com/LLMServe/DistServe) and [FastServe](https://github.com/LLMServe/FastServe) use SwiftTransformer as the execution backend.
 
 It has the following advantages:
